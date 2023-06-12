@@ -2,6 +2,9 @@
 import { initFlowbite } from "flowbite";
 import DarkMode from "./DarkMode.vue";
 import { RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/auth.store";
+
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -49,39 +52,11 @@ import { RouterLink } from "vue-router";
         >
           <li>
             <a
-              href="#"
+              @click="authStore.logout()"
               class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
-              aria-current="page"
-              >Home</a
             >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
-              >Pricing</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
-              >Contact</a
-            >
+              Logout
+            </a>
           </li>
         </ul>
       </div>

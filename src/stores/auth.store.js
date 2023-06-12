@@ -11,10 +11,16 @@ import router from "../router";
 const useAuthStore = defineStore("auth", () => {
   const credentials = ref(getCredentials());
   const users = ref([]);
+  const generate = ref({});
 
   async function fetchUsers() {
     const response = await axios.get("https://fakestoreapi.com/users");
     users.value = response.data;
+  }
+
+  async function generateAccount() {
+    let randomNumber = Math.floor(Math.random() * 10);
+    generate.value = users.value[randomNumber];
   }
 
   async function login(form) {
@@ -48,20 +54,21 @@ const useAuthStore = defineStore("auth", () => {
   const isAuthenticated = () =>
     !!credentials.value.token && !!credentials.value.user;
 
-  async function register(form) {
-    await axios.post("https://fakestoreapi.com/users", JSON.stringify(form), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log("Registered successfully");
+  async function logout() {
+    removeCredentials();
+    credentials.value.token = "";
+    credentials.value.user = "";
+    router.push({ name: "login" });
   }
 
   fetchUsers();
   return {
     login,
     isAuthenticated,
-    register,
+    users,
+    generate,
+    generateAccount,
+    logout,
   };
 });
 

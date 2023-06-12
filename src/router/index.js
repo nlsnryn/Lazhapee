@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { authMiddleware } from "./middleware/auth.middleware";
 import LoginView from "@/views/auth/LoginView.vue";
-import RegisterView from "@/views/auth/RegisterView.vue";
 import IndexView from "@/views/IndexView.vue";
 
 const router = createRouter({
@@ -19,14 +18,6 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
-      meta: {
-        group: "auth",
-      },
-    },
-    {
-      path: "/register",
-      name: "register",
-      component: RegisterView,
       meta: {
         group: "auth",
       },

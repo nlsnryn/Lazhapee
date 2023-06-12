@@ -28,11 +28,6 @@ import { RouterLink } from "vue-router";
           class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg"
           >Login your account</RouterLink
         >
-        <RouterLink
-          :to="{ name: 'register' }"
-          class="px-4 py-2 border border-blue-700 dark:border-greenColor rounded-lg dark:text-greenColor text-blue-700"
-          >Create an account</RouterLink
-        >
       </div>
     </div>
   </main>
