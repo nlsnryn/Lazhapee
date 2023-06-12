@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-primary;
+  @apply dark:bg-primary bg-white;
 }

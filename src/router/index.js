@@ -1,21 +1,46 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "../App.vue";
-import LoginView from "@/views/LoginView.vue";
+import { authMiddleware } from "./middleware/auth.middleware";
+import LoginView from "@/views/auth/LoginView.vue";
+import RegisterView from "@/views/auth/RegisterView.vue";
+import IndexView from "@/views/IndexView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "app",
-      component: App,
+      name: "index",
+      component: IndexView,
+      meta: {
+        group: "landing",
+      },
     },
     {
       path: "/login",
       name: "login",
       component: LoginView,
+      meta: {
+        group: "auth",
+      },
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: RegisterView,
+      meta: {
+        group: "auth",
+      },
+    },
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      component: () => import("@/views/DashboardView.vue"),
+      meta: {
+        requiredAuth: true,
+      },
     },
   ],
 });
 
+router.beforeEach(authMiddleware);
 export default router;

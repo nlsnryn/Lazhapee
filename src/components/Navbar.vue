@@ -1,23 +1,23 @@
 <script setup>
 import { initFlowbite } from "flowbite";
+import DarkMode from "./DarkMode.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-primary">
+  <nav
+    class="bg-white border-gray-200 dark:bg-primary fixed top-0 right-0 left-0"
+  >
     <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative"
     >
-      <a href="https://flowbite.com/" class="flex items-center">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-8 mr-3"
-          alt="Flowbite Logo"
-        />
+      <div class="flex items-center">
+        <DarkMode />
         <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-greenColor"
-          >Lazhapee</span
+          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-greenColor text-primary"
+          ><router-link :to="{ name: 'index' }">Lazhapee</router-link></span
         >
-      </a>
+      </div>
       <button
         data-collapse-toggle="navbar-default"
         type="button"
@@ -40,14 +40,17 @@ import { initFlowbite } from "flowbite";
           ></path>
         </svg>
       </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <div
+        class="hidden md:block md:w-auto absolute top-12 right-0 left-0 mx-auto md:relative md:mx-0 md:top-0 w-11/12"
+        id="navbar-default"
+      >
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-primary dark:border-gray-700"
         >
           <li>
             <a
               href="#"
-              class="block py-2 pl-3 pr-4 text-white md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
               aria-current="page"
               >Home</a
             >
@@ -55,28 +58,28 @@ import { initFlowbite } from "flowbite";
           <li>
             <a
               href="#"
-              class="block py-2 pl-3 pr-4 text-white md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
               >About</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="block py-2 pl-3 pr-4 text-white md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
               >Services</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="block py-2 pl-3 pr-4 text-white md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
               >Pricing</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="block py-2 pl-3 pr-4 text-white md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
               >Contact</a
             >
           </li>

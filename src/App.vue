@@ -1,7 +1,6 @@
 <script setup>
 import { RouterView } from "vue-router";
 import Navbar from "./components/Navbar.vue";
-import DarkMode from "./components/DarkMode.vue";
 </script>
 
 <template>
