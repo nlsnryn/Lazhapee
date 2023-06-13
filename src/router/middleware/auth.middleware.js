@@ -10,7 +10,7 @@ export const authMiddleware = async (to) => {
   } else {
     if (to.meta.group === "landing" || to.meta.group === "auth") {
       // redirect to dashboard once authenticated and trying to access page/route that has a group name of auth and landing which is not require authentication and that's not allowed!
-      return { name: "dashboard" };
+      return { name: "products" };
     }
   }
 };

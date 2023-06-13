@@ -23,9 +23,18 @@ const router = createRouter({
       },
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
+      path: "/products",
+      name: "products",
       component: () => import("@/views/DashboardView.vue"),
+      meta: {
+        requiredAuth: true,
+      },
+    },
+    {
+      path: "/products/:id",
+      name: "product",
+      component: () => import("@/views/ProductView.vue"),
+      props: true,
       meta: {
         requiredAuth: true,
       },

@@ -25,7 +25,7 @@ import { RouterLink } from "vue-router";
       >
         <RouterLink
           :to="{ name: 'login' }"
-          class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg"
+          class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg cursor-pointer"
           >Login your account</RouterLink
         >
       </div>

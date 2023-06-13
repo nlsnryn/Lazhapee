@@ -48,7 +48,7 @@ const useAuthStore = defineStore("auth", () => {
     credentials.value.token = token;
     credentials.value.user = user;
 
-    router.push({ name: "dashboard" });
+    router.push({ name: "products" });
   }
 
   const isAuthenticated = () =>
