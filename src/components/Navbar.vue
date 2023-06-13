@@ -4,7 +4,7 @@ import DarkMode from "./DarkMode.vue";
 import { RouterLink } from "vue-router";
 import { useAuthStore } from "../stores/auth.store";
 import { useRouter } from "vue-router";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -62,7 +62,7 @@ onMounted(() => {
               @click="router.push({ name: 'products' })"
               class="cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
-              Products
+              All Products
             </a>
           </li>
           <li>
@@ -72,16 +72,16 @@ onMounted(() => {
               Cart
             </a>
           </li>
-          <li>
+          <li v-if="!authStore.isAuthenticated()">
             <a
-              v-if="!authStore.isAuthenticated()"
               @click="router.push({ name: 'login' })"
               class="cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
               Log In
             </a>
+          </li>
+          <li v-else>
             <a
-              v-else
               @click="authStore.logout()"
               class="cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
