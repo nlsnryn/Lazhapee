@@ -92,7 +92,7 @@ onMounted(() => {
               class="relative cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
               <span
-                class="absolute text-xs top-0 -left-3 bg-red-500 rounded-full hover:text-whiteColor p-0.5"
+                class="absolute text-xs top-0 -left-3 text-whiteColor bg-blue-700 dark:bg-red-500 rounded-full hover:text-whiteColor p-0.5"
                 >{{ cartStore.cartItems.length }}</span
               >
               Cart

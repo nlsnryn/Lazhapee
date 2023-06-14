@@ -23,7 +23,7 @@ defineProps({
       <Transition name="modal-inner">
         <div
           v-if="deleteModal || checkOut"
-          class="p-4 bg-whiteColor dark:bg-primary self-start mt-40 sm:mt-32 max-w-screen-md rounded-md"
+          class="p-4 bg-whiteColor dark:bg-primary self-center mt-40 sm:mt-32 max-w-screen-md rounded-md"
         >
           <slot />
           <div v-if="deleteModal" class="flex gap-3 sm:gap-5">
