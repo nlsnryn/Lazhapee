@@ -51,8 +51,8 @@ onMounted(async () => {
             aria-hidden="true"
             class="w-5 h-5"
             :class="{
-              'text-yellow-300': product.rating.rate >= star,
-              'text-gray-300': product.rating.rate < star,
+              'text-yellow-300': product.rating && product.rating.rate >= star,
+              'text-gray-300': product.rating && product.rating.rate < star,
             }"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -65,7 +65,7 @@ onMounted(async () => {
           </svg>
           <span
             class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
-            >{{ product.rating.rate }}</span
+            >{{ product.rating && product.rating.rate }}</span
           >
         </div>
         <h2 class="text-2xl mt-5">${{ product.price }}</h2>

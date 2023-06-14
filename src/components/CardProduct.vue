@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="w-full flex flex-col items-stretch justify-between max-w-sm sm:max-w-[200px] lg:max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    class="w-full flex flex-col items-stretch justify-between max-w-sm xs:max-w-[200px] lg:max-w-[240px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
     <div>
       <img
@@ -26,7 +26,7 @@ const props = defineProps({
       <div>
         <a href="#">
           <h5
-            class="text-xl sm:text-sm lg:text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
+            class="text-xl xs:text-sm font-semibold tracking-tight text-gray-900 dark:text-white"
           >
             {{ product.title }}
           </h5>
@@ -51,19 +51,19 @@ const props = defineProps({
             ></path>
           </svg>
           <span
-            class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
+            class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
             >{{ product.rating.rate }}</span
           >
         </div>
       </div>
       <div class="flex items-center justify-between">
         <span
-          class="text-3xl sm:text-sm lg:text-3xl font-bold text-gray-900 dark:text-white"
+          class="text-3xl xs:text-sm lg:text-lg font-bold text-gray-900 dark:text-white"
           >${{ product.price }}</span
         >
         <router-link
           :to="{ name: 'product', params: { id: product.id } }"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:px-3 sm:py-1 lg:px-5 lg:py-2.5 px-5 py-2.5 text-center dark:bg-greenColor dark:hover:bg-greenColor dark:focus:ring-greenColor"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm xs:px-3 xs:py-1 px-5 py-2.5 text-center dark:bg-greenColor dark:hover:bg-greenColor dark:focus:ring-greenColor"
         >
           More info
         </router-link>
