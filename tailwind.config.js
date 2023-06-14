@@ -17,6 +17,9 @@ module.exports = {
         greenColor: "#0EF6CC",
         whiteColor: "#F4FEFD",
       },
+      fontFamily: {
+        Roboto: ["Roboto, sans-serif"],
+      },
     },
   },
   plugins: [require("flowbite/plugin")],

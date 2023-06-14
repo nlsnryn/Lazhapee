@@ -1,13 +1,26 @@
 <script setup>
 import { storeToRefs } from "pinia";
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, reactive, ref } from "vue";
 import { useProductStore } from "../stores/product.store";
+import { useCartStore } from "../stores/cart.store";
 import ProductSkeleton from "../components/ProductSkeleton.vue";
 
 const productStore = useProductStore();
+const cartStore = useCartStore();
 const isLoading = ref(false);
 const { product } = storeToRefs(productStore);
 const stars = ref([1, 2, 3, 4, 5]);
+
+function addCart() {
+  const cart = reactive({
+    id: product.value.id,
+    title: product.value.title,
+    price: product.value.price,
+    image: product.value.image,
+    quantity: 1,
+  });
+  cartStore.addItemToCart(cart);
+}
 
 const props = defineProps({
   id: {
@@ -72,6 +85,7 @@ onMounted(async () => {
 
         <div class="flex gap-5 mt-10">
           <button
+            @click="addCart()"
             class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm hover:-translate-y-2 transition-all duration-150"
           >
             Add to cart

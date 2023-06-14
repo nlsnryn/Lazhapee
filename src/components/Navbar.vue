@@ -3,11 +3,32 @@ import { initFlowbite } from "flowbite";
 import DarkMode from "./DarkMode.vue";
 import { RouterLink } from "vue-router";
 import { useAuthStore } from "../stores/auth.store";
+import { useCartStore } from "../stores/cart.store";
 import { useRouter } from "vue-router";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
+import CartModal from "./CartModal.vue";
+import CartCard from "./CartCard.vue";
 
 const router = useRouter();
 const authStore = useAuthStore();
+const cartStore = useCartStore();
+const isShowModal = ref(false);
+
+const sortedCartItems = computed(() => {
+  // Copy the cart items array and sort it in descending order
+  // return [...cartStore.cartItems].sort((a, b) => a.index - b.index).reverse();
+  return cartStore.cartItems.slice().reverse();
+});
+
+function toggleModal() {
+  isShowModal.value = !isShowModal.value;
+
+  if (isShowModal.value) {
+    document.body.classList.add("overflow-hidden");
+  } else {
+    document.body.classList.remove("overflow-hidden");
+  }
+}
 
 onMounted(() => {
   initFlowbite();
@@ -67,6 +88,7 @@ onMounted(() => {
           </li>
           <li>
             <a
+              @click="toggleModal()"
               class="cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
               Cart
@@ -91,5 +113,22 @@ onMounted(() => {
         </ul>
       </div>
     </div>
+
+    <CartModal :activeModal="isShowModal" @close-modal="toggleModal()">
+      <main class="text-primary dark:text-whiteColor my-10">
+        <h1
+          class="text-xl font-medium text-blue-700 dark:text-greenColor ml-5 mr-32"
+        >
+          Lazhaping Cart
+        </h1>
+        <div class="flex gap-3 flex-wrap mt-10">
+          <CartCard
+            v-for="items in sortedCartItems"
+            :key="items.id"
+            :cart="items"
+          />
+        </div>
+      </main>
+    </CartModal>
   </nav>
 </template>
