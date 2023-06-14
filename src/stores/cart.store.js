@@ -1,10 +1,11 @@
-import { get } from "@vueuse/core";
 import { defineStore } from "pinia";
-import { computed, ref } from "vue";
+import { ref } from "vue";
+import router from "../router/index";
 
 const useCartStore = defineStore("cart", () => {
   const cartItems = ref([]);
   const total = ref(0);
+  const isCheckOut = ref(false);
 
   function addItemToCart(newItem) {
     const itemFiltered = cartItems.value.find((item) => item.id === newItem.id);
@@ -49,9 +50,26 @@ const useCartStore = defineStore("cart", () => {
     }
   }
 
+  function checkOut() {
+    if (!total.value) {
+      return;
+    }
+
+    if (cartItems.value.length >= 1) {
+      isCheckOut.value = !isCheckOut.value;
+      cartItems.value = [];
+      total.value = 0;
+      router.push({ name: "products" });
+    } else {
+      isCheckOut.value = !isCheckOut.value;
+    }
+  }
+
   return {
     cartItems,
     total,
+    isCheckOut,
+    checkOut,
     addItemToCart,
     addQuantity,
     minusQuantity,

@@ -4,12 +4,23 @@ import { defineProps, onMounted, reactive, ref } from "vue";
 import { useProductStore } from "../stores/product.store";
 import { useCartStore } from "../stores/cart.store";
 import ProductSkeleton from "../components/ProductSkeleton.vue";
+import DeleteModal from "../components/DeleteModal.vue";
+import router from "../router/index";
 
 const productStore = useProductStore();
 const cartStore = useCartStore();
 const isLoading = ref(false);
 const { product } = storeToRefs(productStore);
 const stars = ref([1, 2, 3, 4, 5]);
+const isCheckOut = ref(false);
+
+function checkOut() {
+  isCheckOut.value = !isCheckOut.value;
+
+  if (!isCheckOut.value) {
+    router.push({ name: "products" });
+  }
+}
 
 function addCart() {
   const cart = reactive({
@@ -86,17 +97,23 @@ onMounted(async () => {
         <div class="flex gap-5 mt-10">
           <button
             @click="addCart()"
-            class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm hover:-translate-y-2 transition-all duration-150"
+            class="bg-blue-700 dark:bg-greenColor dark:hover:bg-green-800 transition-all duration-200 text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm"
           >
             Add to cart
           </button>
           <button
-            class="bg-blue-700 dark:bg-greenColor text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm hover:-translate-y-2 transition-all duration-150"
+            @click="checkOut()"
+            class="bg-blue-700 dark:bg-greenColor dark:hover:bg-green-800 transition-all duration-200 text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm"
           >
             Buy Now
           </button>
         </div>
       </div>
     </div>
+    <DeleteModal :checkOut="isCheckOut" @close-modal="checkOut()"
+      ><h1 class="text-primary dark:text-whiteColor">
+        You successfully checkout! Wait for the delivery!
+      </h1></DeleteModal
+    >
   </main>
 </template>

@@ -89,8 +89,12 @@ onMounted(() => {
           <li>
             <a
               @click="toggleModal()"
-              class="cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
+              class="relative cursor-pointer block py-2 pl-3 pr-4 text-primary hover:bg-blue-700 dark:hover:bg-greenColor hover:text-white md:hover:bg-transparent md:hover:text-blue-700 md:hover:dark:bg-transparent rounded md:bg-transparent md:text-primary md:p-0 dark:text-white md:dark:text-whiteColor md:hover:dark:text-greenColor hover:dark:text-whiteColor"
             >
+              <span
+                class="absolute text-xs top-0 -left-3 bg-red-500 rounded-full hover:text-whiteColor p-0.5"
+                >{{ cartStore.cartItems.length }}</span
+              >
               Cart
             </a>
           </li>
@@ -115,13 +119,13 @@ onMounted(() => {
     </div>
 
     <CartModal :activeModal="isShowModal" @close-modal="toggleModal()">
-      <main class="text-primary dark:text-whiteColor my-10">
+      <main class="text-primary dark:text-whiteColor my-4">
         <h1
           class="text-xl font-medium text-blue-700 dark:text-greenColor ml-5 mr-32"
         >
           Lazhaping Cart
         </h1>
-        <div class="flex gap-3 flex-wrap mt-10">
+        <div class="flex gap-3 flex-wrap mt-20">
           <CartCard
             v-for="items in sortedCartItems"
             :key="items.id"

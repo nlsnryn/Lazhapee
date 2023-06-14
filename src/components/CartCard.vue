@@ -1,7 +1,9 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, ref } from "vue";
 import { useCartStore } from "../stores/cart.store";
+import DeleteModal from "./DeleteModal.vue";
 
+const showDeleteModal = ref(false);
 const cartStore = useCartStore();
 
 defineProps({
@@ -10,6 +12,18 @@ defineProps({
     default: () => {},
   },
 });
+
+function deleteModal(id, quantity) {
+  if (quantity <= 1) {
+    showDeleteModal.value = !showDeleteModal.value;
+  } else {
+    cartStore.minusQuantity(id);
+
+    if (!quantity) {
+      showDeleteModal.value = !showDeleteModal.value;
+    }
+  }
+}
 </script>
 
 <template>
@@ -28,7 +42,7 @@ defineProps({
       <h2 class="text-sm mb-4 font-medium">$ {{ cart.price }}</h2>
       <div class="flex flex-row gap-1 items-center">
         <button
-          @click="cartStore.minusQuantity(cart.id)"
+          @click="deleteModal(cart.id, cart.quantity)"
           class="text-sm bg-blue-700 dark:bg-greenColor px-2 text-whiteColor rounded-sm"
         >
           -
@@ -46,5 +60,11 @@ defineProps({
         </button>
       </div>
     </div>
+    <DeleteModal
+      :deleteModal="showDeleteModal"
+      @close-modal="deleteModal()"
+      @delete-location="cartStore.minusQuantity(cart.id)"
+      ><h1 class="text-sm">Do you want to remove this product?</h1></DeleteModal
+    >
   </div>
 </template>

@@ -63,7 +63,7 @@ const props = defineProps({
         >
         <router-link
           :to="{ name: 'product', params: { id: product.id } }"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm xs:px-3 xs:py-1 px-5 py-2.5 text-center dark:bg-greenColor dark:hover:bg-greenColor dark:focus:ring-greenColor"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm xs:px-3 xs:py-1 px-5 py-2.5 text-center dark:bg-greenColor dark:hover:bg-green-800 transition-all duration-200 dark:focus:ring-greenColor"
         >
           More info
         </router-link>
