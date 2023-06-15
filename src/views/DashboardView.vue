@@ -1,6 +1,6 @@
 <script setup>
 import { useProductStore } from "../stores/product.store";
-import CardProduct from "../components/CardProduct.vue";
+import CardProduct from "../components/dashboard/CardProduct.vue";
 import SearchProduct from "../components/SearchProduct.vue";
 
 const productStore = useProductStore();

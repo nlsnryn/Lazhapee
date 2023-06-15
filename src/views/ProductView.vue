@@ -3,9 +3,10 @@ import { storeToRefs } from "pinia";
 import { defineProps, onMounted, reactive, ref } from "vue";
 import { useProductStore } from "../stores/product.store";
 import { useCartStore } from "../stores/cart.store";
-import ProductSkeleton from "../components/ProductSkeleton.vue";
-import DeleteModal from "../components/DeleteModal.vue";
+import ProductSkeleton from "../components/partials/ProductSkeleton.vue";
+import DeleteModal from "../components/partials/DeleteModal.vue";
 import router from "../router/index";
+import DefaultButton from "../components/DefaultButton.vue";
 
 const productStore = useProductStore();
 const cartStore = useCartStore();
@@ -60,6 +61,7 @@ onMounted(async () => {
       <div>
         <img :src="product.image" alt="Product Image" class="w-80 h-auto" />
       </div>
+
       <div class="dark:text-whiteColor max-w-md text-primary">
         <h1 class="text-3xl">{{ product.title }}</h1>
         <h2 class="text-xl capitalize text-blue-700 dark:text-greenColor">
@@ -95,18 +97,17 @@ onMounted(async () => {
         <h2 class="text-2xl mt-5">${{ product.price }}</h2>
 
         <div class="flex gap-5 mt-10">
-          <button
+          <default-button
             @click="addCart()"
-            class="bg-blue-700 dark:bg-greenColor dark:hover:bg-green-800 transition-all duration-200 text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm"
+            class="px-4 py-2 rounded-lg uppercase text-sm"
+            >Add to cart</default-button
           >
-            Add to cart
-          </button>
-          <button
+          <default-button
             @click="checkOut()"
-            class="bg-blue-700 dark:bg-greenColor dark:hover:bg-green-800 transition-all duration-200 text-whiteColor px-4 py-2 rounded-lg cursor-pointer uppercase text-sm"
+            class="px-4 py-2 rounded-lg uppercase text-sm"
           >
             Buy Now
-          </button>
+          </default-button>
         </div>
       </div>
     </div>

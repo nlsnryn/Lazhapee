@@ -1,8 +1,8 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { defineProps, defineEmits, ref } from "vue";
-import { useCartStore } from "../stores/cart.store";
-import DeleteModal from "./DeleteModal.vue";
+import { useCartStore } from "../../stores/cart.store";
+import DeleteModal from "../partials/DeleteModal.vue";
 const cartStore = useCartStore();
 const { total, isCheckOut } = storeToRefs(cartStore);
 

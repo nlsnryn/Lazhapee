@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, ref } from "vue";
-import { useCartStore } from "../stores/cart.store";
-import DeleteModal from "./DeleteModal.vue";
+import { useCartStore } from "../../stores/cart.store";
+import DeleteModal from "../partials/DeleteModal.vue";
 
 const showDeleteModal = ref(false);
 const cartStore = useCartStore();
