@@ -1,10 +1,18 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import router from "../router/index";
 
 const useCartStore = defineStore("cart", () => {
   const cartItems = ref([]);
-  const total = ref(0);
+
+  const total = computed(() => {
+    let total = 0;
+    cartItems.value.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return parseFloat(total.toFixed(2));
+  });
+
   const isCheckOut = ref(false);
 
   function addItemToCart(newItem) {
@@ -16,23 +24,21 @@ const useCartStore = defineStore("cart", () => {
     }
 
     cartItems.value.push(newItem);
-    getTotalPrice();
   }
 
-  function getTotalPrice() {
-    total.value = 0;
-    cartItems.value.forEach((item) => {
-      total.value += item.price * item.quantity;
-    });
-    total.value = parseFloat(total.value.toFixed(2));
-  }
+  // function getTotalPrice() {
+  //   total.value = 0;
+  //   cartItems.value.forEach((item) => {
+  //     total.value += item.price * item.quantity;
+  //   });
+  //   total.value = parseFloat(total.value.toFixed(2));
+  // }
 
   function addQuantity(id) {
     const item = cartItems.value.find((item) => item.id === id);
 
     if (item) {
       item.quantity += 1;
-      getTotalPrice();
     }
   }
 
@@ -42,10 +48,8 @@ const useCartStore = defineStore("cart", () => {
     if (item) {
       if (item.quantity >= 2) {
         item.quantity -= 1;
-        getTotalPrice();
       } else {
         cartItems.value = cartItems.value.filter((item) => item.id !== id);
-        getTotalPrice();
       }
     }
   }
